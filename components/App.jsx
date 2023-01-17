@@ -1,17 +1,11 @@
-import LoginPage from "./LoginPage.jsx";
-import React from "react";
+import React from 'react';
+import LoginPage from './LoginPage.jsx';
+import Homepage from './Homepage';
 
-
-
-
-const App = () => {
-
-  return(
-    <>
-      <LoginPage /> 
-    </>
-  )
+function App() {
+  return (
+    <LoginPage />
+  );
 }
-
 
 export default App;

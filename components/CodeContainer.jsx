@@ -6,13 +6,6 @@ function CodeContainer() {
   return (
     <div id="codeContainer">
       <input type="text" placeholder="description" />
-      <select name="Category" id="category">
-        <option value="example1">example1</option>
-        <option value="example2">example2</option>
-        <option value="example3">example3</option>
-        <option value="example4">example4</option>
-
-      </select>
       <CodeEditor
         value={code}
         language="js"
