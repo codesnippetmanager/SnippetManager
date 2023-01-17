@@ -1,0 +1,27 @@
+{
+  "name": "snippet-manager",
+  "version": "1.0.0",
+  "description": "Code snippet manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codesnippetmanager/SnippetManager.git"
+  },
+  "author": "Jason, Christian, Maria, and Dan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codesnippetmanager/SnippetManager/issues"
+  },
+  "homepage": "https://github.com/codesnippetmanager/SnippetManager#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.75.0"
+  }
+}
