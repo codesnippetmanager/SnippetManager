@@ -48,46 +48,11 @@ function NewSnippetDialog() {
         variant="outlined"
         onClick={handleClickOpen}
       >
-      <Button
-        variant="outlined"
-        onClick={handleClickOpen}
-      >
         New Code Snippet
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>New Code Snippet</DialogTitle>
         <DialogContent>
-          <Box
-            componenet="form"
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Title"
-              type="text"
-              fullWidth
-              variant="standard"
-              onChange={(evn) => setTitle(evn.target.value)}
-
-            />
-            <CodeEditor
-              language="js"
-              placeholder="Please enter code."
-              onChange={(evn) => setCode(evn.target.value)}
-              padding={15}
-              style={{
-                fontSize: 12,
-                width: '600px',
-                height: '300px',
-                backgroundColor: '#f5f5f5',
-                fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-              }}
-            />
-          </Box>
-        </DialogContent>
           <Box
             componenet="form"
             onSubmit={handleSubmit}
