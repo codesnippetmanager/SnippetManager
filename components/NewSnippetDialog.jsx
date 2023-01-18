@@ -29,7 +29,8 @@ function NewSnippetDialog() {
     console.log('Title: ', title);
     console.log('Code: ', code);
     let newCode = code;
-    newCode = newCode.replace('\'', '\'\'');
+    newCode = newCode.replaceAll('\'', '\'\'');
+    console.log(newCode);
     setCode(newCode);
     fetch('http://localhost:3000/api/snippet/create', {
       method: 'POST',
@@ -79,7 +80,7 @@ function NewSnippetDialog() {
               placeholder="Please enter code."
               onChange={(evn) => {
                 setCode(evn.target.value);
-                console.log(code);
+                // console.log(code);
               }}
               padding={15}
               style={{

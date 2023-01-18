@@ -76,7 +76,7 @@ function SideBar() {
             padding={15}
             style={{
               fontSize: 12,
-              width: '500%',
+              // width: '500%',
               height: '700px',
               backgroundColor: '#f5f5f5',
               fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
