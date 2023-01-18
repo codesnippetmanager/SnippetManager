@@ -133,38 +133,7 @@ const LoginPage =  () => {
         <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
         </div>
       </div>
-    </div>
-  );
 
-  const signUp = (
-    <div className="login-container">
-      <Typography>Sign Up</Typography>
-      <TextField
-        id="outlined-username-input"
-        label="Username"
-        type="username"
-        autoComplete="current-username"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ username: e.target.value }))}
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Repeat Password"
-        type="password"
-        autoComplete="current-password"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
-      />
-      <div className="button-container">
-        <Button variant="contained">Sign Up</Button>
-      </div>
-    </div>
-  );
 
   const renderView = (showSignUp) ? signUp : logIn;
 
