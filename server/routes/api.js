@@ -18,20 +18,20 @@ router.post('/signup', userController.createUser, (req, res) => {
   // res.redirect('/login')
 });
 
-router.post('/home', snippetController.createSnippet, (req, res) => {
+router.post('/snippet/create', snippetController.createSnippet, (req, res) => {
   res.status(200).json('Created Snippet');
   // res.redirect('/login')
 });
 
-router.get('/home', snippetController.getSnippets, (req, res) => {
+router.get('/snippet/getall', snippetController.getSnippets, (req, res) => {
   res.send(res.locals.snippets);
 });
 
-router.delete('/home', snippetController.deleteSnippet, (req, res) => {
+router.delete('snippet/delete', snippetController.deleteSnippet, (req, res) => {
   res.status(200).json('Deleted');
 });
 
-router.patch('/home', snippetController.editSnippet, (req, res) => {
+router.patch('/snippet/update', snippetController.editSnippet, (req, res) => {
   res.status(200).json('updated');
 });
 

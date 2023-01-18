@@ -14,11 +14,13 @@ function SideBar() {
   const dispatch = useDispatch();
 
   return (
-    <div className="homepage">
+
+    <div className="sidebar">
       <div className="snippet-container">
         <div className="list-view">
-          <NewSnippetDialog />
           <h3>Code Snippets</h3>
+          <NewSnippetDialog />
+
           <List component="nav">
             {list.map((item, index) => (
               <ListItem button key={index}>
@@ -40,7 +42,6 @@ function SideBar() {
               fontSize: 12,
               width: '500%',
               height: '700px',
-              margin: '5px',
               backgroundColor: '#f5f5f5',
               fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}

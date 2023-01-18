@@ -13,8 +13,6 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function NewSnippetDialog() {
   const [open, setOpen] = React.useState(false);
-  const [code, setCode] = React.useState('');
-  const [title, setTitle] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,6 +26,19 @@ function NewSnippetDialog() {
     e.preventDefault();
     console.log('Title: ', title);
     console.log('Code: ', code);
+    fetch('http://localhost:3000/api/snippet/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: 'jasonkuyper1', title, code }),
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log('THIS IS FROM THE RESPONSE', data);
+      })
+      .catch((err) => {
+        console.log(`there was an error sending LOGIN DATA, error: ${err}`);
+      });
     setOpen(false);
   };
 
@@ -75,6 +86,7 @@ function NewSnippetDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleSubmit}>Add</Button>
           <Button onClick={handleSubmit}>Add</Button>
         </DialogActions>
       </Dialog>
