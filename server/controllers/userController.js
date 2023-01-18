@@ -6,7 +6,7 @@ const userController = {};
 
 userController.verifyUser = (req, res, next) => {
   const plainTextPassword = req.body.password;
-  const str = `SELECT * FROM "Users" WHERE username = '${req.body.username}'`;
+  const str = `SELECT * FROM Users WHERE username = '${req.body.username}'`;
   db.query(str, (err, results) => {
     if(!err){
       if(results.rowCount === 0){
@@ -15,7 +15,6 @@ userController.verifyUser = (req, res, next) => {
       const hash = results.rows[0].password
       bcrypt.compare(plainTextPassword, hash, function(err, result) {
         if(result == true){
-          console.log('result true')
           return next();
         }
       });
@@ -26,10 +25,10 @@ userController.verifyUser = (req, res, next) => {
 };
 
 userController.createUser = (req, res, next) => {
-  const {username, password, first_name, last_name} = req.body;
+  const {username, password} = req.body;
   bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
-      const str = `INSERT INTO "Users" (username, password, first_name, last_name) VALUES ('${username}', '${hash}', '${first_name}', '${last_name}')`
+      const str = `INSERT INTO Users (username, password) VALUES ('${username}', '${hash}')`
       db.query(str, (err, result) =>{
         if(!err){
           return next();
