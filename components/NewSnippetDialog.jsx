@@ -13,8 +13,6 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function NewSnippetDialog() {
   const [open, setOpen] = React.useState(false);
-  const [code, setCode] = React.useState('');
-  const [title, setTitle] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);

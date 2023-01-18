@@ -8,10 +8,6 @@
   flex:1;
 }
 
-.list-view {
-  background-color: lightblue;
-}
-
 .editor {
   display:flex;
   flex-direction: column;
