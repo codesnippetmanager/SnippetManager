@@ -1,13 +1,17 @@
 import React from 'react';
-import LoginPage from './LoginPage';
-import SideBar from './SideBar';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SideBar from './SideBar.jsx';
+import LoginPage from './LoginPage.jsx';
 
 function App() {
   return (
-    <>
-      <LoginPage />
-      <SideBar />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<LoginPage />} />
+        <Route exact path="/home" element={<SideBar />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
