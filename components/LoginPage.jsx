@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import {Button, Typography, Box, TextField} from '@mui/material';
+import {
+  Button, Typography, Box, TextField,
+} from '@mui/material';
 
-import "../styling/login.css";
+import '../styling/login.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {updateUserPassActionCreator, updateSignInActionCreator, loginActionCreator} from "../redux/actions.js";
 import { Link, Navigate } from "react-router-dom";
@@ -18,6 +20,22 @@ const LoginPage =  () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: usernameState, password: passwordState }),
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log('THIS IS FROM THE RESPONSE', data);
+      })
+      .catch((err) => {
+        console.log(`there was an error sending LOGIN DATA, error: ${err}`);
+      });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -115,18 +133,48 @@ const LoginPage =  () => {
         <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
         </div>
       </div>
+    </div>
+  );
 
-  const renderView = (showSignUp) ? signUp : logIn
+  const signUp = (
+    <div className="login-container">
+      <Typography>Sign Up</Typography>
+      <TextField
+        id="outlined-username-input"
+        label="Username"
+        type="username"
+        autoComplete="current-username"
+        onChange={(e) => dispatch(updateUserPassActionCreator({ username: e.target.value }))}
+      />
+      <TextField
+        id="outlined-password-input"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
+      />
+      <TextField
+        id="outlined-password-input"
+        label="Repeat Password"
+        type="password"
+        autoComplete="current-password"
+        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
+      />
+      <div className="button-container">
+        <Button variant="contained">Sign Up</Button>
+      </div>
+    </div>
+  );
+
+  const renderView = (showSignUp) ? signUp : logIn;
 
 
 
   return (
-      <>
-        {renderView}
-      </>
-  )
-
-};
-
+    <>
+      {renderView}
+    </>
+  );
+}
 
 export default LoginPage;
