@@ -13,7 +13,9 @@ function SideBar() {
 
 
   return (
+
     <div className="sidebar">
+      {console.log(list, "THIS IS ISITT")}
       <div className='snippet-container'>
         <div className='list-view'> 
             <h3>Code Snippets</h3>
