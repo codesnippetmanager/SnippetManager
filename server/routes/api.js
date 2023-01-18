@@ -23,7 +23,7 @@ router.post('/snippet/create', snippetController.createSnippet, (req, res) => {
   // res.redirect('/login')
 });
 
-router.get('/snippet/getall', snippetController.getSnippets, (req, res) => {
+router.get('/snippet/getall/:username', snippetController.getSnippets, (req, res) => {
   res.send(res.locals.snippets);
 });
 

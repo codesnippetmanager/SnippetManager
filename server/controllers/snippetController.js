@@ -3,9 +3,10 @@ const db = require('../models/userModel');
 const snippetController = {};
 
 snippetController.getSnippets = (req, res, next) => {
-  const str = `SELECT * FROM Snippets WHERE username = '${req.body.username}'`;
+  const str = `SELECT * FROM Snippets WHERE username = '${req.params.username}'`;
   db.query(str, (err, results) => {
     res.locals.snippets = results.rows;
+    // console.log(results.rows);
     return next();
   });
 };

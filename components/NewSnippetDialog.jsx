@@ -13,6 +13,8 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 function NewSnippetDialog() {
   const [open, setOpen] = React.useState(false);
+  const [code, setCode] = React.useState('');
+  const [title, setTitle] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,6 +28,9 @@ function NewSnippetDialog() {
     e.preventDefault();
     console.log('Title: ', title);
     console.log('Code: ', code);
+    let newCode = code;
+    newCode = newCode.replace('\'', '\'\'');
+    setCode(newCode);
     fetch('http://localhost:3000/api/snippet/create', {
       method: 'POST',
       headers: {
@@ -37,7 +42,7 @@ function NewSnippetDialog() {
         console.log('THIS IS FROM THE RESPONSE', data);
       })
       .catch((err) => {
-        console.log(`there was an error sending LOGIN DATA, error: ${err}`);
+        console.log(`there was an error saving snippet data: ${err}`);
       });
     setOpen(false);
   };
@@ -72,7 +77,10 @@ function NewSnippetDialog() {
             <CodeEditor
               language="js"
               placeholder="Please enter code."
-              onChange={(evn) => setCode(evn.target.value)}
+              onChange={(evn) => {
+                setCode(evn.target.value);
+                console.log(code);
+              }}
               padding={15}
               style={{
                 fontSize: 12,
@@ -86,7 +94,6 @@ function NewSnippetDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>Add</Button>
           <Button onClick={handleSubmit}>Add</Button>
         </DialogActions>
       </Dialog>
