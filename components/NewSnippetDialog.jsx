@@ -28,6 +28,19 @@ function NewSnippetDialog() {
     e.preventDefault();
     console.log('Title: ', title);
     console.log('Code: ', code);
+    fetch('http://localhost:3000/api/snippet/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: 'jasonkuyper1', title, code }),
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log('THIS IS FROM THE RESPONSE', data);
+      })
+      .catch((err) => {
+        console.log(`there was an error sending LOGIN DATA, error: ${err}`);
+      });
     setOpen(false);
   };
 
