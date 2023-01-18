@@ -5,16 +5,19 @@ const snippetController = {};
 snippetController.getSnippets = (req, res, next) => {
   const str = `SELECT * FROM Snippets WHERE username = '${req.body.username}'`
   db.query(str, (err, results) => {
+    res.locals.snippets = results.rows; 
     return next()
   })
 };
 
 snippetController.createSnippet = (req, res, next) => {
   const {username, title, code} = req.body
-  const str = `INSERT INTO Snippets (username, title, code) VALUES ('${username}' '${title}' '${code}')`
+  const str = `INSERT INTO Snippets (username, title, code) VALUES ('${username}', '${title}', '${code}')`
   db.query(str, (err, results) => {
     if(!err){
       return next();
+    } else{
+      return next()
     }
   })
 }
