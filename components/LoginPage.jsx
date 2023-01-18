@@ -81,6 +81,7 @@ const LoginPage =  () => {
 
   const logIn = 
     <div className='login-container'>
+        <div className='input-container'>
         <Typography>Login</Typography>
         <TextField
           id="outlined-username-input"
@@ -96,6 +97,7 @@ const LoginPage =  () => {
           autoComplete="current-password"
           onChange={(e) => dispatch(updateUserPassActionCreator({username: usernameState, password:e.target.value}))}
         />
+        </div>
         <div className='button-container'>
         <Button variant="contained" onClick={handleSubmit}>Login</Button>
         <Button variant="contained" onClick={(e) => dispatch(updateSignInActionCreator({showSignup: true}))}>Sign Up</Button>
@@ -106,6 +108,7 @@ const LoginPage =  () => {
 
   const signUp = 
     <div className='login-container'>
+      <div className='input-container'>
         <Typography>Sign Up</Typography>
         <TextField
           id="outlined-username-input"
@@ -129,6 +132,7 @@ const LoginPage =  () => {
           autoComplete="current-password"
           onChange={(e) => dispatch(updateUserPassActionCreator({username: usernameState, password:e.target.value}))}
         />
+        </div>
         <div className='button-container'>
         <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
         </div>

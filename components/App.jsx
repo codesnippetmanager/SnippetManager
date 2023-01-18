@@ -12,6 +12,7 @@ function App() {
         <Route path="/home"  element={<SideBar />} />
       </Routes>
     </BrowserRouter>
+    
   );
 }
 
