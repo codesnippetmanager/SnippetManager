@@ -3,6 +3,7 @@ import * as types from "./actionTypes.js"
 
 const initialState = {
   snippets : ["CODES","MORE CODE"]
+  
 }
 
 const snippetReducer = (state = initialState, action) => {
