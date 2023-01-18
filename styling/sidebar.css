@@ -1,0 +1,9 @@
+.snippet-container{
+  display: flex;
+  /* flex-direction: row; */
+  /* align-content: space-between; */
+}
+
+.list-view, .editor {
+  flex:1;
+}
