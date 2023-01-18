@@ -27,9 +27,9 @@ export const updateSnippetListActionCreator = inputs => {
 export const loginActionCreator = (username, password) => {
   return (dispatch) => {
     dispatch({ type: 'LOGIN_REQUEST' });
-    axios.post('https://localhost:3000/login', { username, password })
+    axios.post('https://localhost:3000/api/login', { username:username, password:password })
       .then(response => {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: response.data });
+        dispatch({ type: 'LOGIN_SUCCESS', payload: response });
       })
       .catch(error => {
         dispatch({ type: 'LOGIN_FAILURE', payload: error });
