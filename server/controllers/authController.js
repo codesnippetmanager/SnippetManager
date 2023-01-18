@@ -8,7 +8,7 @@ authController.setCookie = (req, res, next) => {
 };
 
 authController.verifyCookie = (req, res, next) => {
-  if(req.cookies.token === 'admin'){
+  if(req.cookies.token === 'verified'){
     return next();
   } else{
     return res.status(400).json('You must be signed in to view this page')
