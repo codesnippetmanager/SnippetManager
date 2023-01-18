@@ -9,9 +9,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
-        <Route path="/home" element={<SideBar />} />
+        <Route path="/home"  element={<SideBar />} />
       </Routes>
     </BrowserRouter>
+    
   );
 }
 
