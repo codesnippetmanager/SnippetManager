@@ -1,16 +1,14 @@
-import LoginPage from "./LoginPage.jsx";
-import React from "react";
-import SideBar from "./SideBar.jsx";
+import React from 'react';
+import LoginPage from './LoginPage';
+import SideBar from './SideBar';
 
-const App = () => {
-
-  return(
+function App() {
+  return (
     <>
-      <LoginPage /> 
+      <LoginPage />
       <SideBar />
     </>
-  )
+  );
 }
-
 
 export default App;
