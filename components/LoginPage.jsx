@@ -81,6 +81,7 @@ const LoginPage =  () => {
 
   const logIn = 
     <div className='login-container'>
+        <div className='input-container'>
         <Typography>Login</Typography>
         <TextField
           id="outlined-username-input"
@@ -96,6 +97,7 @@ const LoginPage =  () => {
           autoComplete="current-password"
           onChange={(e) => dispatch(updateUserPassActionCreator({username: usernameState, password:e.target.value}))}
         />
+        </div>
         <div className='button-container'>
         <Button variant="contained" onClick={handleSubmit}>Login</Button>
         <Button variant="contained" onClick={(e) => dispatch(updateSignInActionCreator({showSignup: true}))}>Sign Up</Button>
@@ -106,6 +108,7 @@ const LoginPage =  () => {
 
   const signUp = 
     <div className='login-container'>
+      <div className='input-container'>
         <Typography>Sign Up</Typography>
         <TextField
           id="outlined-username-input"
@@ -129,42 +132,12 @@ const LoginPage =  () => {
           autoComplete="current-password"
           onChange={(e) => dispatch(updateUserPassActionCreator({username: usernameState, password:e.target.value}))}
         />
+        </div>
         <div className='button-container'>
         <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
         </div>
       </div>
-    </div>
-  );
 
-  const signUp = (
-    <div className="login-container">
-      <Typography>Sign Up</Typography>
-      <TextField
-        id="outlined-username-input"
-        label="Username"
-        type="username"
-        autoComplete="current-username"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ username: e.target.value }))}
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Repeat Password"
-        type="password"
-        autoComplete="current-password"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ password: e.target.value }))}
-      />
-      <div className="button-container">
-        <Button variant="contained">Sign Up</Button>
-      </div>
-    </div>
-  );
 
   const renderView = (showSignUp) ? signUp : logIn;
 
