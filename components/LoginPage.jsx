@@ -13,27 +13,47 @@ function LoginPage() {
   const showSignUp = useSelector((state) => state.auth.showSignup);
   const dispatch = useDispatch();
 
-  const logIn = (
-    <div className="login-container">
-      <Typography>Login</Typography>
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ username: usernameState, password: e.target.value }))}
-      />
-      <TextField
-        id="outlined-username-input"
-        label="Username"
-        type="username"
-        autoComplete="current-username"
-        onChange={(e) => dispatch(updateUserPassActionCreator({ username: e.target.value, password: passwordState }))}
-      />
-      <div className="button-container">
-        <Button variant="contained">Login</Button>
-        <Button variant="contained" onClick={(e) => dispatch(updateSignInActionCreator({ showSignup: true }))}>Sign Up</Button>
-      </div>
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username: usernameState, password: passwordState})
+    }).then((res) => res.json())
+    .then((data)=>{
+      console.log('THIS IS FROM THE RESPONSE', data)
+    })
+    .catch((err)=>{
+      console.log(`there was an error sending LOGIN DATA, error: ${err}`)
+    })
+  }
+
+  
+
+  const logIn = 
+    <div className='login-container'>
+        <Typography>Login</Typography>
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          onChange={(e) => dispatch(updateUserPassActionCreator({username: usernameState, password:e.target.value}))}
+        />
+        <TextField
+          id="outlined-username-input"
+          label="Username"
+          type="username"
+          autoComplete="current-username"
+          onChange={(e) => dispatch(updateUserPassActionCreator({username: e.target.value, password: passwordState}))}
+        />
+        <div className='button-container'>
+        <Button variant="contained" onClick={handleSubmit}>Login</Button>
+        <Button variant="contained" onClick={(e) => dispatch(updateSignInActionCreator({showSignup: true}))}>Sign Up</Button>
+        </div>
     </div>
   );
 
