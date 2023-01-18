@@ -3,7 +3,7 @@ import {Button, Typography, Box, TextField} from '@mui/material';
 
 import "../styling/login.css";
 import { useDispatch, useSelector } from 'react-redux';
-import {updateUserPassActionCreator, updateSignInActionCreator} from "../redux/actions.js";
+import {updateUserPassActionCreator, updateSignInActionCreator, loginActionCreator} from "../redux/actions.js";
 
 
 
@@ -15,7 +15,25 @@ const LoginPage =  () => {
   const dispatch = useDispatch();
 
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username: usernameState, password: passwordState})
+    }).then((res) => res.json())
+    .then((data)=>{
+      console.log('THIS IS FROM THE RESPONSE', data)
+    })
+    .catch((err)=>{
+      console.log(`there was an error sending LOGIN DATA, error: ${err}`)
+    })
+  }
+
   
+
   const logIn = 
     <div className='login-container'>
         <Typography>Login</Typography>
@@ -34,7 +52,7 @@ const LoginPage =  () => {
           onChange={(e) => dispatch(updateUserPassActionCreator({username: e.target.value, password: passwordState}))}
         />
         <div className='button-container'>
-        <Button variant="contained">Login</Button>
+        <Button variant="contained" onClick={handleSubmit}>Login</Button>
         <Button variant="contained" onClick={(e) => dispatch(updateSignInActionCreator({showSignup: true}))}>Sign Up</Button>
         </div>
     </div>

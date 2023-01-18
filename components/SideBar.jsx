@@ -14,6 +14,7 @@ function SideBar() {
   const dispatch = useDispatch();
 
   return (
+
     <div className="sidebar">
       <div className="snippet-container">
         <div className="list-view">
