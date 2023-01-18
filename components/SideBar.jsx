@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import "../styling/sidebar.css";
 import { updateSnippetListActionCreator } from '../redux/actions';
+import NewSnippetDialog from './NewSnippetDialog';
 
 function SideBar() {
 
@@ -17,15 +18,8 @@ function SideBar() {
       <div className='snippet-container'>
         <div className='list-view'> 
             <h3>Code Snippets</h3>
-            <Button variant="contained" color="primary" onClick={(e) => dispatch(updateSnippetListActionCreator(({item: text})))} >
-              Add
-            </Button>
-            <TextField
-                id="new-item"
-                label="New Item"
-                // value={newItem}
-                onChange= {(e) => dispatch(updateSnippetListActionCreator([...list, e.target.value]))}
-            />
+            <NewSnippetDialog />
+           
             <List component="nav">
               {list.map((item, index) => (
                 <ListItem button key={index} >
