@@ -1,14 +1,12 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 
-
-
 const container = document.getElementById("app");
 const root = createRoot(container);
 
 root.render(
   <>
-    <h1> Hi ii APP</h1>
+    <h1> Hi APP</h1>
   </>
 );
 

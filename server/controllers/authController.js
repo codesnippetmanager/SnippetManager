@@ -3,12 +3,8 @@ const db = require('../models/userModel');
 const authController = {};
 
 authController.setCookie = (req, res, next) => {
-  if(res.locals.verified == true){
-    res.cookie('token', 'verified');
-    return next();
-  } else{
-    return res.status(400).json('Invalid login info');
-  }
+  res.cookie('token', 'verified');
+  return next();
 };
 
 authController.verifyCookie = (req, res, next) => {
